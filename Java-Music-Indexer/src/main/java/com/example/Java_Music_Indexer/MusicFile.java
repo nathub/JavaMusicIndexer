@@ -17,24 +17,35 @@ public class MusicFile {
 	private Long artistId;
 	private Long albumId;
 	private Long folderId;
+	private String fileName;
 	private Long libraryId;
 	
 	protected MusicFile() {}
 	
-	public MusicFile(String path) {
+	public MusicFile(String path) { //Maybe switch path for filename and folder id?
+		
+		File song = getFile(path);
+		this.fileName = song.getName();
+		
+		
 		
 		
 	}
 	
 	private File getFile(String path) {
-		File song = new File("");
-		return new File("");
+		File song = new File(path);
+		return song;
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("MusicFile[id=%d, songName='%s', folderId=%d]",
-								id, songName, folderId);
+		return String.format("MusicFile[id=%d, songName='%s', folderId=%d, fileName='%s']",
+								id, songName, folderId, fileName);
+	}
+	
+	public String printMusicFile() {
+		
+		return "printout not yet available"; //fetch library, artist, and album names for this print
 	}
 	
 	public Long getId() {
